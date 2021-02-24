@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "737495225162",
+    "project_id": "dimex-d9ca1",
+    "storage_bucket": "dimex-d9ca1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:737495225162:android:eee4a69362a878ff9ea7b3",
+        "android_client_info": {
+          "package_name": "com.amitkumar.dimex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "737495225162-cnvqfavbbmep802ml0u5m6n8dkskhjej.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1mSpHBg1pE57A_cjxsSrkwJT1b1O5G_k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "737495225162-cnvqfavbbmep802ml0u5m6n8dkskhjej.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
