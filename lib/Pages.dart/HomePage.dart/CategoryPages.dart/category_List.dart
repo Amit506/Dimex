@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+
+import 'category_pages.dart';
 enum CategoryTpes {
   // accomodations,
   // amusements,
@@ -22,35 +24,60 @@ List<PlaceCategories> categoryListName = [
   PlaceCategories(
       categoryTpes: CategoryTpes.adult,
       color: Colors.blue,
-      name: 'Party & Clubs'),
+      name: 'Party & Clubs',
+      assetName: 'assets/party.jpg',
+      classname: PartyFeed.routeName,
+      ),
+
   PlaceCategories(
       categoryTpes:  CategoryTpes.foods,
       color: Colors.blue,
-      name: 'Hotels & Foods'),
+      name: 'Hotels & Foods',
+      assetName: 'assets/food.jpg',
+      classname: FoodFeed.routeName
+      ),
   PlaceCategories(
       categoryTpes: CategoryTpes.historic,
       color: Colors.blue,
-      name: 'Historical'),
+      name: 'Historical',
+      assetName: 'assets/historical.jpg',
+      classname: HistoryFeed.routeName
+      ),
   PlaceCategories(
       categoryTpes: CategoryTpes.museums,
       color: Colors.blue,
-      name: 'Museums'),
+      name: 'Museums',
+      assetName: 'assets/museum.jpg',
+      classname: MuseumFeed.routeName
+      ),
   PlaceCategories(
       categoryTpes: CategoryTpes.religion,
       color: Colors.blue,
-      name: 'Temples'),
+      name: 'Temples',
+      assetName: 'assets/temple.jpg',
+      classname: TempleFeed.routeName
+      ),
   PlaceCategories(
       categoryTpes:  CategoryTpes.natural,
       color: Colors.blue,
-      name: 'Park & Nature'),
+      name: 'Park & Nature',
+      assetName: 'assets/nature.jpg',
+      classname: NatureFeed.routeName
+      ),
   PlaceCategories(
       categoryTpes: CategoryTpes.shops,
       color: Colors.blue,
-      name: 'Market & Shops'),
+      name: 'Market & Shops',
+      assetName: 'assets/market.jpg',
+      classname: ShopFeed.routeName,
+      ),
   PlaceCategories(
       categoryTpes: CategoryTpes.sport,
       color: Colors.blue,
-      name: 'Stadium & Sport'),
+      name: 'Stadium & Sport',
+      assetName: 'assets/stadium.jpg',
+      classname: SportFeed.routeName,
+      ),
 
 
 ];
@@ -59,5 +86,8 @@ class PlaceCategories {
   CategoryTpes categoryTpes;
   String name;
   Color color;
-  PlaceCategories({this.categoryTpes, this.color, this.name});
+  String assetName;
+   String classname;
+
+  PlaceCategories({this.categoryTpes, this.color, this.name,this.assetName, @required this.classname});
 }

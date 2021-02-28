@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:dimex/size_config.dart';
 import 'RegistrationPage.dart';
-
+import 'AuthProvider.dart';
+import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
 class SignInPage extends StatefulWidget {
  static String routeName= 'SignInpage';
 
@@ -13,14 +15,18 @@ class SignInPage extends StatefulWidget {
 
 class _SignInPageState extends State<SignInPage> with TickerProviderStateMixin {
   AnimationController _animationController;
-
+AuthService _authService = AuthService();
   @override
   void initState() {
+  
     _animationController = AnimationController(
       vsync: this,
       duration: Duration(seconds: 3),
     )..forward();
     super.initState();
+   
+   
+
   }
 
   @override
@@ -110,7 +116,9 @@ class _SignInPageState extends State<SignInPage> with TickerProviderStateMixin {
                     borderRadius: BorderRadius.circular(20.0),
                     gradient: linearGradient),
                 child: FlatButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    
+                  },
                   child: Text('Sign In'),
                 ),
               ),
@@ -143,7 +151,14 @@ class _SignInPageState extends State<SignInPage> with TickerProviderStateMixin {
                     borderRadius: BorderRadius.circular(20.0),
                     gradient: linearGradient),
                 child: FlatButton(
-                  onPressed: () {},
+                  onPressed: () async{
+                    print('hii');
+  UserCredential _user = await  _authService.anonymousSignIn()..user.updateProfile(displayName:'Amit',photoURL:'https://avatars.githubusercontent.com/u/65785786?s=60&v=4');
+  print(_user);
+  
+
+  
+                  },
                   child: Text('Google Sign in'),
                 ),
               ),

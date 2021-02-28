@@ -1,3 +1,4 @@
+
 import 'package:dimex/Pages.dart/HomePage.dart/CategoryPages.dart/category_pages.dart';
 import 'package:dimex/Pages.dart/PlacesViewPage.dart/ViewPage.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,9 +10,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'list_scroll_data.dart';
 import 'package:provider/provider.dart';
 import 'package:dimex/TripData.dart/models.dart/SpecificPlace.dart';
-import 'home_page_data.dart';
+import 'category_networking.dart';
 import 'CategoryPages.dart/category_List.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+
 
 class HomePage extends StatefulWidget {
    static String routeName= 'HomePage';
@@ -26,6 +28,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     
   }
+
 
   List temporary = [1, 2, 3];
   @override
@@ -117,7 +120,10 @@ class _HomePageState extends State<HomePage> {
                       decoration: BoxDecoration(),
                       child: GestureDetector(
                         onTap: (){
-                           Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>PlaceViewPage(data[index])));
+                           Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>PlaceViewPage(
+                            //  data[index]
+                             
+                             )));
                         },
                                               child: FadeInImage(
                           placeholder:
@@ -161,30 +167,7 @@ class _HomePageState extends State<HomePage> {
                             );
                           }
                         })),
-              // SizedBox(
-              //   height: MediaQuery.of(context).size.height * 0.4,
-              //   width: double.infinity,
-              //   child: Transform.rotate(
-              //     angle: 9.42 / 2,
-              //     child: ListWheelScrollView.useDelegate(
-              //       clipBehavior: Clip.none,
-              //       itemExtent: 230.0,
-              //       childDelegate: ListWheelChildBuilderDelegate(
-              //           childCount: categoryListName.length,
-              //           builder: (context, index) {
-              //             return Container(
-              //               decoration: BoxDecoration(
-              //                 color: Colors.redAccent,
-              //                 borderRadius:
-              //                     BorderRadius.all(Radius.circular(25.0)),
-
-              //               ),
-              //               child: Image.asset('assets/Preloader.gif'),
-              //             );
-              //           }),
-              //     ),
-              //   ),
-              // ),
+             
               SizedBox(
                 height: 20,
               ),
@@ -240,7 +223,7 @@ class _HomePageState extends State<HomePage> {
           itemBuilder: (context, int index) {
             return GestureDetector(
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>CategoryFeed(categoryListName[index].categoryTpes)));
+              Navigator.pushNamed(context, categoryListName[index].classname);
               },
                           child: Container(
                 margin: EdgeInsets.all(5.0),
@@ -248,7 +231,7 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(
                   backgroundBlendMode: BlendMode.colorDodge,
                   image: DecorationImage(
-                    image: AssetImage('assets/airplane.jpg'),
+                    image: AssetImage(categoryListName[index].assetName),
                     fit: BoxFit.cover,
                   ),
                   color: Colors.blue[200],

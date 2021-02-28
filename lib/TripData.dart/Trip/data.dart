@@ -29,6 +29,7 @@ class Trip {
       String lat, String lon, String radiusInmeter, String limit,String rate) async {
     try {
       final response = await http.get(
+      
           '$basUrl/places/radius?radius=$radiusInmeter&lon=$lon&lat=$lat&rate=$rate&format=json&limit=$limit&apikey=$apiKeyy');
       final placesInRadius = placesInRadiusFromJson(response.body);
       return placesInRadius;

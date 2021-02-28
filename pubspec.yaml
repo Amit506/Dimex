@@ -35,6 +35,8 @@ dependencies:
   json_annotation: ^3.1.1
   provider:
   carousel_slider:
+  android_intent: ^0.3.7+7
+  cloud_firestore: ^0.16.0+1
 
 dev_dependencies:
   flutter_test:

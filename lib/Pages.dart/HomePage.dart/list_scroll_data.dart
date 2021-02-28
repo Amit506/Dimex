@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:dimex/TripData.dart/models.dart/PlacesInRadius.dart';
 import 'package:dimex/TripData.dart/models.dart/categorizedPlaces.dart';
 import 'package:dimex/TripData.dart/models.dart/SpecificPlace.dart';
-import 'home_page_data.dart';
+import 'category_networking.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:provider/provider.dart';
@@ -18,27 +18,6 @@ class WheelScrollData with ChangeNotifier {
 
   List<PlacesInRadius> _allPlaces;
   List<SpecificPlaceInfo> _subPlaces = [];
-
-
-
-
-  // set addSubPlaces(SpecificPlaceInfo _temp) {
-  //   _subPlaces.add(_temp);
-  // //  _streamController.sink.add(_subPlaces);
-  //   // notifyListeners();
-  // }
-
-  // set addAllPlaces(List<PlacesInRadius> _temp) {
-  //   _allPlaces = _temp;
-  // }
-
-  // List<SpecificPlaceInfo> get subPlaces {
-  //   return _subPlaces;
-  // }
-
-  // List<PlacesInRadius> get allPlaces {
-  //   return _allPlaces;
-  // }
 
   List<PlacesInRadius> randomSubList(List<PlacesInRadius> _allList) {
     Random random = Random();
