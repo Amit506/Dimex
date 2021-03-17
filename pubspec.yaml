@@ -37,6 +37,8 @@ dependencies:
   carousel_slider:
   android_intent: ^0.3.7+7
   cloud_firestore: ^0.16.0+1
+  dio: ^3.0.10
+  geolocator: ^6.2.1
 
 dev_dependencies:
   flutter_test:

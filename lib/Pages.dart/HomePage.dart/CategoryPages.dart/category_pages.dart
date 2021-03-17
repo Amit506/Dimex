@@ -179,11 +179,11 @@ class FoodFeed extends StatefulWidget {
 class _FoodFeedState extends State<FoodFeed> {
   bool _isLoading = false;
 
-  ScrollController _scrollController = ScrollController();
-  List<CategorizedPlaces> allCategorizedPlaces = [];
-  List<SpecificPlaceInfo> t = [];
-  // CategoryDataProvider categoryDataProvider;
-
+  // ScrollController _scrollController = ScrollController();
+  // List<CategorizedPlaces> allCategorizedPlaces = [];
+  // List<SpecificPlaceInfo> t = [];
+ 
+List restaurants =[];
   @override
   void initState() {
     super.initState();
@@ -193,138 +193,142 @@ class _FoodFeedState extends State<FoodFeed> {
   }
 
   getData() async {
-    allCategorizedPlaces =
-        await Provider.of<FoodsDataProvider>(context, listen: false)
-            .getAllAvailabeData();
-    t = await Provider.of<FoodsDataProvider>(context, listen: false)
-        .getSubList(allCategorizedPlaces);
+   restaurants = await Provider.of<FoodsDataProvider>(context,listen: false).getcityFoodData();
+
   }
 
   @override
   Widget build(BuildContext context) {
-    print(t.length);
+       print(restaurants);
+
     return Scaffold(
-      body: NotificationListener<ScrollNotification>(
-        onNotification: (ScrollNotification _scrollInfo) {
-          if (_scrollInfo.metrics.pixels ==
-              _scrollInfo.metrics.maxScrollExtent) {
-            print('reached end');
-          } else {}
-        },
-        child: CustomScrollView(
-          controller: _scrollController,
-          slivers: [
-            SliverAppBar(
-              title: Text('Dimex'),
-              pinned: true,
-              floating: false,
-            ),
-            Consumer<FoodsDataProvider>(
-              builder: (context, value, child) {
-                return value.subListOfSpecifPlaces.length != 0
-                    ? SliverList(
-                        delegate: SliverChildBuilderDelegate((context, index) {
-                          return Card(
-                            child: Container(
-                              height: MediaQuery.of(context).size.height * 0.67,
-                              width: double.infinity,
-                              color: Colors.greenAccent,
-                              child: Column(children: [
-                                Flexible(
-                                  flex: 1,
-                                  child: Row(children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(4.0),
-                                      child: CircleAvatar(
-                                        radius: 20.0,
-                                      ),
-                                    ),
-                                  ]),
-                                ),
-                                Expanded(
-                                  flex: 8,
-                                  child: Container(
-                                      color: Colors.lightBlue,
-                                      child: FadeInImage(
-                                        placeholder:
-                                            AssetImage('assets/airplane.jpg'),
-                                        image: NetworkImage(value
-                                            .subListOfSpecifPlaces[index]
-                                            .preview
-                                            .source),
-                                        fit: BoxFit.cover,
-                                      )),
-                                ),
-                                Flexible(
-                                  flex: 1,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(6.0),
-                                    child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Icon(Icons.favorite),
-                                          Transform.rotate(
-                                              angle: 3.14 / 2,
-                                              child: Icon(Icons
-                                                  .label_important_rounded)),
-                                          Icon(Icons.filter_3_rounded),
-                                        ]),
-                                  ),
-                                ),
-                              ]),
-                            ),
-                          );
-                        }, childCount: value.subListOfSpecifPlaces.length),
-                      )
-                    : SliverToBoxAdapter(
-                        child: Container(
-                        height: 30,
-                        child: LinearProgressIndicator(),
-                      ));
-              },
-            ),
-            SliverToBoxAdapter(
-              child: Container(
-                  height: 20,
-                  width: 20,
-                  child: Consumer<FoodsDataProvider>(
-                    builder: (context, value, child) {
-                      return value.subListOfSpecifPlaces.length != 0 &&
-                              value.isLoading
-                          ? CircularProgressIndicator()
-                          : Container();
-                    },
-                  )),
-            ),
-            SliverToBoxAdapter(
-              child: Container(
-                height: 50,
-                child: Consumer<FoodsDataProvider>(
-                  builder: (context, value, child) {
-                    return value.currentIndex != value.length
-                        ? TextButton(
-                            onPressed: () async {
-                              await Provider.of<FoodsDataProvider>(context,
-                                      listen: false)
-                                  .getSubList(allCategorizedPlaces);
-                            },
-                            child: Text('More'),
-                          )
-                        : TextButton(
-                            onPressed: () async {},
-                            child: Text(' No More items '),
-                          );
-                  },
-                ),
-              ),
-            ),
-          ],
-        ),
+      body: Center(
+        child:Text('let seee'),
       ),
+
     );
+    // return Scaffold(
+    //   body: NotificationListener<ScrollNotification>(
+    //     onNotification: (ScrollNotification _scrollInfo) {
+    //       if (_scrollInfo.metrics.pixels ==
+    //           _scrollInfo.metrics.maxScrollExtent) {
+    //         print('reached end');
+    //       } else {}
+    //     },
+    //     child: CustomScrollView(
+    //       controller: _scrollController,
+    //       slivers: [
+    //         SliverAppBar(
+    //           title: Text('Dimex'),
+    //           pinned: true,
+    //           floating: false,
+    //         ),
+    //         Consumer<FoodsDataProvider>(
+    //           builder: (context, value, child) {
+    //             return value.subListOfSpecifPlaces.length != 0
+    //                 ? SliverList(
+    //                     delegate: SliverChildBuilderDelegate((context, index) {
+    //                       return Card(
+    //                         child: Container(
+    //                           height: MediaQuery.of(context).size.height * 0.67,
+    //                           width: double.infinity,
+    //                           color: Colors.greenAccent,
+    //                           child: Column(children: [
+    //                             Flexible(
+    //                               flex: 1,
+    //                               child: Row(children: [
+    //                                 Padding(
+    //                                   padding: const EdgeInsets.all(4.0),
+    //                                   child: CircleAvatar(
+    //                                     radius: 20.0,
+    //                                   ),
+    //                                 ),
+    //                               ]),
+    //                             ),
+    //                             Expanded(
+    //                               flex: 8,
+    //                               child: Container(
+    //                                   color: Colors.lightBlue,
+    //                                   child: FadeInImage(
+    //                                     placeholder:
+    //                                         AssetImage('assets/airplane.jpg'),
+    //                                     image: NetworkImage(value
+    //                                         .subListOfSpecifPlaces[index]
+    //                                         .preview
+    //                                         .source),
+    //                                     fit: BoxFit.cover,
+    //                                   )),
+    //                             ),
+    //                             Flexible(
+    //                               flex: 1,
+    //                               child: Padding(
+    //                                 padding: const EdgeInsets.all(6.0),
+    //                                 child: Row(
+    //                                     mainAxisAlignment:
+    //                                         MainAxisAlignment.spaceAround,
+    //                                     crossAxisAlignment:
+    //                                         CrossAxisAlignment.center,
+    //                                     children: [
+    //                                       Icon(Icons.favorite),
+    //                                       Transform.rotate(
+    //                                           angle: 3.14 / 2,
+    //                                           child: Icon(Icons
+    //                                               .label_important_rounded)),
+    //                                       Icon(Icons.filter_3_rounded),
+    //                                     ]),
+    //                               ),
+    //                             ),
+    //                           ]),
+    //                         ),
+    //                       );
+    //                     }, childCount: value.subListOfSpecifPlaces.length),
+    //                   )
+    //                 : SliverToBoxAdapter(
+    //                     child: Container(
+    //                     height: 30,
+    //                     child: LinearProgressIndicator(),
+    //                   ));
+    //           },
+    //         ),
+    //         SliverToBoxAdapter(
+    //           child: Container(
+    //               height: 20,
+    //               width: 20,
+    //               child: Consumer<FoodsDataProvider>(
+    //                 builder: (context, value, child) {
+    //                   return value.subListOfSpecifPlaces.length != 0 &&
+    //                           value.isLoading
+    //                       ? CircularProgressIndicator()
+    //                       : Container();
+    //                 },
+    //               )),
+    //         ),
+    //         SliverToBoxAdapter(
+    //           child: Container(
+    //             height: 50,
+    //             child: Consumer<FoodsDataProvider>(
+    //               builder: (context, value, child) {
+    //                 return value.currentIndex != value.length
+    //                     ? TextButton(
+    //                         onPressed: () async {
+    //                           await Provider.of<FoodsDataProvider>(context,
+    //                                   listen: false)
+    //                               .getSubList(allCategorizedPlaces);
+    //                         },
+    //                         child: Text('More'),
+    //                       )
+    //                     : TextButton(
+    //                         onPressed: () async {},
+    //                         child: Text(' No More items '),
+    //                       );
+    //               },
+    //             ),
+    //           ),
+    //         ),
+    //       ],
+    //     ),
+    //   ),
+    // );
   }
 }
 
